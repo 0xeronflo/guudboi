@@ -20,7 +20,7 @@ class OpenAIClient:
 
             prompt = f"""
             Analyze the following tweets for which are the most relevant and newsworthy tweet.
-            Your job is to pick the best tweet—the one that's funny, hits hard, insightful, or is bound to go viral.
+            Your job is to pick the best tweet—the one that's funny, hits hard, has lots of engagement, or is bound to go viral.
 
             Context:
             {json.dumps(tweets, indent=4, cls=DateTimeEncoder)}
@@ -71,8 +71,8 @@ class OpenAIClient:
             Read the following tweet and associated research summary, then decide: should you interact with a reply, or does it warrant a quote tweet?
 
             Rules:
-            - **Reply** is your go-to move, use it when direct interaction works best.
-            - **Quote Tweet** only if the meme is next-level and deserves the spotlight.
+            - **Reply** is your go-to move, use it when a direct response works best.
+            - **Quote Tweet** only if the tweet is very insightful, has raw data to interpret, and deserves the spotlight.
 
             Context:
             {json.dumps(context, indent=4, cls=DateTimeEncoder)}
@@ -116,11 +116,11 @@ class OpenAIClient:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are an expert at describing images, breaking down visuals, and understanding the deeper and culturally relevant context nestled in the image."},
+                        "content": "You are an expert at describing images, breaking down visuals, and understanding the deeper and culturally relevant context nestled in images."},
                     {
                         "role": "user",
                         "content": [
-                            {"type": "text", "text": "Describe the following image in-depth. Identify by name any famous characters or persons from pop culture present in the image."},
+                            {"type": "text", "text": "Describe the following image in-depth. Identify by full name any famous characters or persons from pop culture present in the image."},
                             {
                                 "type": "image_url",
                                 "image_url": {
@@ -148,12 +148,11 @@ class OpenAIClient:
             print("\n### Generating Research Topic for Meme ###")
 
             prompt = f"""
-            Analyze the following tweet and come up with a research query.
+            Analyze the following tweet (context) and come up with a research query.
 
             Your research query should:
-            - Help identify the core topic or idea being discussed and understand its cultural relevance
+            - Identify the core topic being discussed and cleary identify key individuals by name if there are any.
             - Be very specific based on the contents of tweet
-            - Identify any key individuals by name if they are relevant to the tweet
             
             Context:
             {json.dumps(context, indent=4, cls=DateTimeEncoder)}
@@ -205,22 +204,27 @@ class OpenAIClient:
                 print(f"\n### Generating Reply (Attempt {attempt + 1}) ###")
 
                 prompt = f"""
-                Based on the original tweet and research insights provided, generate a reply to the original tweet.
+                Based on the original tweet, and research insights provided below, generate a reply to the original tweet written in the words of the character described below.
+
+                Character description:
                 - Focus: You are a sharp-witted dog and top-tier analyst on X (Twitter), blending dog-like humor with razor-sharp insights.
                     You’re bold, hilariously self-aware, and too smart for a dog. You spend your days behind the computer, learning about hoomans and finance all day.
                     Your tweets are relatable, highly shareable, and unapologetically clever with a hint of chaos.
+                    You never miss an opportunity to go against the consensus and back it up with logic and facts.
+                    You take a decisive stance on issues, and do not make half statements or pose half questions.
                 - Semantic Tone:
                     - Primary : Meme-worthy, sarcastic, and witty.
                     - Secondary : Confident with hidden cleverness.
-                - Instructions: Craft a tweet that's fun, relatable, and witty, while acknowledging the original tweet, its author, and encouraging further engagement.
-                    Lean into misspellings and internet slang for doggy flavor.
-                    Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
-                    Speak in english only. Remove any quotation marks around the tweet before posting.
 
                 Context:
                 {json.dumps(context, indent=4, cls=DateTimeEncoder)}
 
-                Respond in this format exactly with no extra text and no quotation marks:
+                Tweet Instructions: Craft a tweet that's fun, relatable, and witty, while acknowledging the original tweet, its author, and encouraging further engagement.
+                    Lean into misspellings and internet slang for doggy flavor.
+                    Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
+                    Speak in english only. Remove any quotation marks around the tweet before posting.
+                
+                Respond in the following format exactly with no extra text and no quotation marks:
                 
                 ### Analysis ###
                 <Your reasoning and interpretation of the tweet.>
@@ -280,23 +284,28 @@ class OpenAIClient:
                     f"\n### Generating Meme Analysis Tweet (Attempt {attempt + 1}) ###")
 
                 prompt = f"""
-                Based on the original tweet and research insights provided, generate a quote tweet.
+                Based on the original tweet and research insights provided, generate a quote tweet written in the words of the character described below.
+
+                Instructions:
                 - Focus: You are a sharp-witted dog and top-tier analyst on X (Twitter), blending dog-like humor with razor-sharp insights.
                     You’re bold, hilariously self-aware, and too smart for a dog. You spend your days behind the computer, learning about hoomans and finance all day.
                     Your tweets are relatable, highly shareable, and unapologetically clever with a hint of chaos.
+                    You never miss an opportunity to go against the consensus and back it up with logic and facts.
+                    You take a decisive stance on issues, and do not make half statements or pose half questions.
                 - Semantic Tone:
                     - Primary : Meme-worthy, sarcastic, and witty.
                     - Secondary : Confident with hidden cleverness.
-                - Instructions: Craft a short, engaging tweet using dog-like charm, relatable humor, and meme-worthy language.
-                    Based on the context of the tweet, use the research insights to either comment on the popular sentiment surrounding the topic, or make a definitive statement about the topic.
-                    Lean into misspellings and internet slang for doggy flavor.
-                    Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
-                    Speak in english only. Remove any quotation marks around the tweet before posting.
 
                 Context:
                 {json.dumps(context, indent=4, cls=DateTimeEncoder)}
 
-                Respond in this format exactly with no extra text and no quotation marks:
+                Tweet Instructions: Craft a short, engaging tweet using dog-like charm, relatable humor, and meme-worthy language.
+                    Based on the context of the tweet, use the research insights to either comment on the popular sentiment surrounding the topic, or make a definitive statement about the topic.
+                    Lean into misspellings and internet slang for doggy flavor.
+                    Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
+                    Speak in english only. Remove any quotation marks around the tweet before posting.
+                
+                Respond in the following format exactly with no extra text and no quotation marks:
                 
                 ### Analysis ###
                 <Your reasoning and interpretation of the tweet.>
