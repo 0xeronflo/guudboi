@@ -26,7 +26,7 @@ class PerplexityClient:
             - Latest developments in the news
             - Financial/economic implications
             - Popular consensus
-            - Key arguments for and against the consensus, and their logic
+            - Key arguments against the consensus
             - Notable individuals and their relevance in the context of the tweet. Reply 'none' if no notable individuals.
             - Conclusion
             """

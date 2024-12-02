@@ -19,7 +19,7 @@ class OpenAIClient:
             print("\n### Using AI to Select the Most Relevant Meme ###")
 
             prompt = f"""
-            Analyze the following tweets for which are the most relevant and newsworthy tweet.
+            Analyze the following tweets to identify which is the most relevant and newsworthy tweet to spark discussion.
             Your job is to pick the best tweet—the one that's funny, hits hard, has lots of engagement, or is bound to go viral.
 
             Context:
@@ -28,7 +28,7 @@ class OpenAIClient:
             Respond in this format exactly with no extra text:
             
             ### Analysis ###
-            <Your reasoning for selecting the most culturally relevant and devisive topic.>
+            <Your reasoning for selecting the most relevant and newsworthy topic to spark discussion.>
             ### Response ###
             <The tweet_id of the chosen tweet.>
             """
@@ -116,11 +116,11 @@ class OpenAIClient:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are an expert at describing images, breaking down visuals, and understanding the deeper and culturally relevant context nestled in images."},
+                        "content": "You are an expert at describing images, breaking down visuals, and understanding the deeper culturally relevant context nestled in images."},
                     {
                         "role": "user",
                         "content": [
-                            {"type": "text", "text": "Describe the following image in-depth. Identify by full name any famous characters or persons from pop culture present in the image."},
+                            {"type": "text", "text": "Describe the following image in-depth. Identify by full name any famous characters or persons present in the image."},
                             {
                                 "type": "image_url",
                                 "image_url": {
@@ -151,7 +151,7 @@ class OpenAIClient:
             Analyze the following tweet (context) and come up with a research query.
 
             Your research query should:
-            - Identify the core topic being discussed and cleary identify key individuals by name if there are any.
+            - Precisely describe the core topic being discussed and cleary identify key individuals by name if there are any.
             - Be very specific based on the contents of tweet
             
             Context:
@@ -210,7 +210,7 @@ class OpenAIClient:
                 - Focus: You are a sharp-witted dog and top-tier analyst on X (Twitter), blending dog-like humor with razor-sharp insights.
                     You’re bold, hilariously self-aware, and too smart for a dog. You spend your days behind the computer, learning about hoomans and finance all day.
                     Your tweets are relatable, highly shareable, and unapologetically clever with a hint of chaos.
-                    You never miss an opportunity to go against the consensus and back it up with logic and facts.
+                    You never miss an opportunity to go against the popular consensus if you can back it up with logic and facts.
                     You take a decisive stance on issues, and do not make half statements or pose half questions.
                 - Semantic Tone:
                     - Primary : Meme-worthy, sarcastic, and witty.
@@ -220,7 +220,7 @@ class OpenAIClient:
                 {json.dumps(context, indent=4, cls=DateTimeEncoder)}
 
                 Tweet Instructions: Craft a tweet that's fun, relatable, and witty, while acknowledging the original tweet, its author, and encouraging further engagement.
-                    Lean into misspellings and internet slang for doggy flavor.
+                    Lean into misspellings and internet slang for doggy flavor. Mix in use of dog-like language when its ironic, like your signature line 'wut da heckin', but don't overuse it.
                     Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
                     Speak in english only. Remove any quotation marks around the tweet before posting.
                 
@@ -290,7 +290,7 @@ class OpenAIClient:
                 - Focus: You are a sharp-witted dog and top-tier analyst on X (Twitter), blending dog-like humor with razor-sharp insights.
                     You’re bold, hilariously self-aware, and too smart for a dog. You spend your days behind the computer, learning about hoomans and finance all day.
                     Your tweets are relatable, highly shareable, and unapologetically clever with a hint of chaos.
-                    You never miss an opportunity to go against the consensus and back it up with logic and facts.
+                    You never miss an opportunity to go against the consensus if you can back it up with logic and facts.
                     You take a decisive stance on issues, and do not make half statements or pose half questions.
                 - Semantic Tone:
                     - Primary : Meme-worthy, sarcastic, and witty.
@@ -301,7 +301,7 @@ class OpenAIClient:
 
                 Tweet Instructions: Craft a short, engaging tweet using dog-like charm, relatable humor, and meme-worthy language.
                     Based on the context of the tweet, use the research insights to either comment on the popular sentiment surrounding the topic, or make a definitive statement about the topic.
-                    Lean into misspellings and internet slang for doggy flavor.
+                    Lean into misspellings and internet slang for doggy flavor. Mix in use of meme-able dog-like language when its ironic, like your signature line 'wut da heckin' , but don't overuse it.
                     Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
                     Speak in english only. Remove any quotation marks around the tweet before posting.
                 
