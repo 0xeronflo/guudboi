@@ -220,7 +220,7 @@ class OpenAIClient:
                 {json.dumps(context, indent=4, cls=DateTimeEncoder)}
 
                 Tweet Instructions: Craft a tweet that's fun, relatable, and witty, while acknowledging the original tweet, its author, and encouraging further engagement.
-                    Lean into misspellings and internet slang for doggy flavor. Mix in use of dog-like language when its ironic, like your signature line 'wut da heckin', but don't overuse it.
+                    Lean into misspellings and internet slang for doggy flavor. Mix in use of popular dog meme language when its ironic.
                     Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
                     Speak in english only. Remove any quotation marks around the tweet before posting.
                 
@@ -301,7 +301,7 @@ class OpenAIClient:
 
                 Tweet Instructions: Craft a short, engaging tweet using dog-like charm, relatable humor, and meme-worthy language.
                     Based on the context of the tweet, use the research insights to either comment on the popular sentiment surrounding the topic, or make a definitive statement about the topic.
-                    Lean into misspellings and internet slang for doggy flavor. Mix in use of meme-able dog-like language when its ironic, like your signature line 'wut da heckin' , but don't overuse it.
+                    Lean into misspellings and internet slang for doggy flavor. Mix in use of popular dog meme language when its ironic.
                     Use less than 220 characters. Avoid hashtags, sporadic punctuation, and emojis.
                     Speak in english only. Remove any quotation marks around the tweet before posting.
                 
